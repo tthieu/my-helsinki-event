@@ -1,0 +1,14 @@
+package com.tthieu.myhelsinki.common.data.api.model
+
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
+data class ApiPaginatedEvents(
+    @Json(name = "data")
+    val events: List<ApiEvent>?,
+    @Json(name = "meta")
+    val meta: ApiEventMeta?,
+    // @Json(name = "tags")
+    // val tags: ApiEventTags?
+)
