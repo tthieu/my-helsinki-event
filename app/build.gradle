@@ -14,7 +14,13 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.tthieu.myhelsinki.HiltTestRunner"
+    }
+
+    sourceSets {
+        androidTest {
+            assets.srcDirs = ["src/debug/assets"]
+        }
     }
 
     buildTypes {
@@ -32,28 +38,68 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+//    sourceSets {
+//        androidTest {
+//            assets.srcDirs = ["src/debug/assets"]
+//        }
+//    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.9.0'
+    // Kotlin
+
+    // Support Libraries
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
-    implementation 'com.github.bumptech.glide:glide:4.15.0'
+    implementation 'junit:junit:4.12'
+
+    // Testing Dependencies
+    testImplementation 'junit:junit:4.13.2'
+
+    // Instrumented tests dependencies
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.45'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // Modules
+    implementation project(":logging")
+
+    // Network
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.11'
-    implementation 'com.google.dagger:hilt-android:2.45'
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11'
-    implementation project(path: ':logging')
     implementation 'com.squareup.moshi:moshi-kotlin:1.14.0'
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+
+    // Cache
     implementation 'androidx.room:room-ktx:2.5.0'
     implementation 'androidx.room:room-rxjava2:2.5.0'
 
-    // Utils
-    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
+    // Concurrency
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    // DI
+    implementation 'com.google.dagger:hilt-android:2.45'
+
+    // UI
+    implementation 'com.github.bumptech.glide:glide:4.15.0'
+    implementation 'com.google.android.material:material:1.8.0'
+
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+
+    // Utils
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.0.2"
+
+
 }

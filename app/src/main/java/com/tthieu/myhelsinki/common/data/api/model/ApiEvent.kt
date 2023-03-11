@@ -89,14 +89,6 @@ data class ApiEventLocation(
 )
 
 @JsonClass(generateAdapter = true)
-data class ApiEventMeta(
-    @Json(name = "count")
-    val count: String?,
-    @Json(name = "next")
-    val next: String?
-)
-
-@JsonClass(generateAdapter = true)
 data class ApiEventName(
     @Json(name = "en")
     val en: String?,

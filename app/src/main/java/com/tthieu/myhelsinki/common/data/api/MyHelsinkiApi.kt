@@ -11,8 +11,8 @@ interface MyHelsinkiApi {
     suspend fun fetchNearbyEvents(
         @Query(ApiParameters.START) start: Int,
         @Query(ApiParameters.LIMIT) pageSize: Int,
-        @Query(ApiParameters.LANGUAGE_FILTER) language: String,
-        @Query(ApiParameters.DISTANCE_FILTER) distance: String
+        // @Query(ApiParameters.LANGUAGE_FILTER) language: String,
+        // @Query(ApiParameters.DISTANCE_FILTER) distance: String
     ): ApiPaginatedEvents
 
     @GET(ApiConstants.EVENT_ENDPOINT)

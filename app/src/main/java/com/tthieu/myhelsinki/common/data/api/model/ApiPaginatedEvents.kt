@@ -12,3 +12,12 @@ data class ApiPaginatedEvents(
     // @Json(name = "tags")
     // val tags: ApiEventTags?
 )
+
+@JsonClass(generateAdapter = true)
+data class ApiEventMeta(
+    @Json(name = "count")
+    val count: String?,
+    @Json(name = "next")
+    val next: String?
+)
+

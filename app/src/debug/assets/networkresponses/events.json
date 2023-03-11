@@ -1,0 +1,172 @@
+{
+  "meta": {
+    "count": "9745",
+    "next": "http://open-api.myhelsinki.fi/v1/events/?limit=2&start=2"
+  },
+  "data": [
+    {
+      "id": "helmet:243408",
+      "name": {
+        "fi": "Musiikin teematorstait Herttoniemen kirjastossa",
+        "en": null,
+        "sv": null,
+        "zh": null
+      },
+      "source_type": {
+        "id": 1,
+        "name": "LinkedEvents"
+      },
+      "info_url": null,
+      "modified_at": "2023-03-11T05:11:35.954Z",
+      "location": {
+        "lat": 60.194541931152344,
+        "lon": 25.03343391418457,
+        "address": {
+          "street_address": "Linnanrakentajantie 2",
+          "postal_code": "00880",
+          "locality": "Helsinki",
+          "neighbourhood": null
+        }
+      },
+      "description": {
+        "intro": "Musiikin teematorstait Hertsikassa",
+        "body": "<p>Herttoniemen kirjastossa soi jokaisen kuukauden ensimmäisenä torstaina teemamusiikki.</p><p>Teema perustuu kuukausittain vaihtuvaan musiikin teemanäyttelyyn.</p><p>Tammikuun teemana on ambient ja kokeellinen musiikki.</p><p>Helmikuun teemana on Made In Britain - musiikkia saarivaltiosta</p><p>Maaliskuussa muistellaan aikaa 30 vuotta sitten, eli vuotta 1993</p>",
+        "images": [
+          {
+            "url": "https://www.helmet.fi/download/noname/{66DE25FE-0143-4D5B-BD55-792C15AF30C0}/96064",
+            "copyright_holder": "",
+            "license_type": {
+              "id": 1,
+              "name": "All rights reserved."
+            },
+            "media_id": null
+          }
+        ]
+      },
+      "tags": [
+        {
+          "id": "linkedevents:helmet:11686",
+          "name": "Concerts and clubs"
+        },
+        {
+          "id": "linkedevents:yso:p1808",
+          "name": "music"
+        },
+        {
+          "id": "linkedevents:helmet:10592",
+          "name": "General"
+        },
+        {
+          "id": "linkedevents:helmet:10689",
+          "name": "Helsinki"
+        },
+        {
+          "id": "linkedevents:helmet:10789",
+          "name": "Herttoniemi Library"
+        },
+        {
+          "id": "linkedevents:helmet:1",
+          "name": "Events"
+        }
+      ],
+      "event_dates": {
+        "starting_day": "2022-09-15T14:00:00.000Z",
+        "ending_day": "2023-12-28T16:00:00.000Z",
+        "additional_description": null
+      }
+    },
+    {
+      "id": "helmet:247768",
+      "name": {
+        "fi": "Bridgekerho",
+        "en": null,
+        "sv": null,
+        "zh": null
+      },
+      "source_type": {
+        "id": 1,
+        "name": "LinkedEvents"
+      },
+      "info_url": null,
+      "modified_at": "2023-03-11T05:11:35.954Z",
+      "location": {
+        "lat": 60.26133728027344,
+        "lon": 24.853647232055664,
+        "address": {
+          "street_address": "Paalutori 3",
+          "postal_code": "01600",
+          "locality": "Vantaa",
+          "neighbourhood": null
+        }
+      },
+      "description": {
+        "intro": "Tule pelaamaan klassista korttipeliä klo 15! Mikäli bridge ei ole sinulle ennestään tuttu peli, muut pelaajat opastavat.",
+        "body": "<p>Tule pelaamaan bridgeä mukavassa seurassa keskiviikkoisin!</p><p>Bridge on klassinen korttipeli eikä vaadi pelaajilta varusteita: kortit ja muut välineet löytyvät paikan päältä. Mikäli peli ei ole sinulle ennestään tuttu, muut pelaajat opastavat. Pelaaminen on vapaamuotoista, voit osallistua silloin kun haluat.</p><p>Bridgekerhon vetäjänä toimii kirjaston vapaaehtoinen.</p><p>Pelaajat kokoontuvat Myyrmäkitalon 3.kerroksen kerhotilassa. Pääset kerhotilaan aulan hissillä.</p><p>Huom. 22.3. ja 29.3. Bridge järjestetään 2. kerroksen tapahtumahuoneessa.</p><p>Kuva: <a href=\"https://www.pexels.com/photo/red-and-white-playing-cards-8002407/ Tony Wu\">Pexels/Tony Wu</a></p>",
+        "images": [
+          {
+            "url": "https://www.helmet.fi/download/noname/{B115C54C-B59F-46B8-AEB8-52AC27F8B074}/98427",
+            "copyright_holder": "",
+            "license_type": {
+              "id": 1,
+              "name": "All rights reserved."
+            },
+            "media_id": null
+          }
+        ]
+      },
+      "tags": [
+        {
+          "id": "linkedevents:yso:p6062",
+          "name": "games"
+        },
+        {
+          "id": "linkedevents:helmet:10675",
+          "name": "Senior citizens"
+        },
+        {
+          "id": "linkedevents:helmet:12023",
+          "name": "For senior citizens"
+        },
+        {
+          "id": "linkedevents:helmet:11687",
+          "name": "Games"
+        },
+        {
+          "id": "linkedevents:helmet:10592",
+          "name": "General"
+        },
+        {
+          "id": "linkedevents:helmet:10691",
+          "name": "Vantaa"
+        },
+        {
+          "id": "linkedevents:yso:p2433",
+          "name": "older people"
+        },
+        {
+          "id": "linkedevents:helmet:1",
+          "name": "Events"
+        }
+      ],
+      "event_dates": {
+        "starting_day": "2023-12-27T13:00:00.000Z",
+        "ending_day": "2023-12-27T18:00:00.000Z",
+        "additional_description": null
+      }
+    }
+  ],
+  "tags": {
+    "linkedevents:helmet:1": "Events",
+    "linkedevents:helmet:10592": "General",
+    "linkedevents:helmet:10675": "Senior citizens",
+    "linkedevents:helmet:10689": "Helsinki",
+    "linkedevents:helmet:10691": "Vantaa",
+    "linkedevents:helmet:10789": "Herttoniemi Library",
+    "linkedevents:helmet:11686": "Concerts and clubs",
+    "linkedevents:helmet:11687": "Games",
+    "linkedevents:helmet:12023": "For senior citizens",
+    "linkedevents:yso:p1808": "music",
+    "linkedevents:yso:p2433": "older people",
+    "linkedevents:yso:p6062": "games"
+  }
+}

@@ -1,8 +1,8 @@
 package com.tthieu.myhelsinki.common.domain.model.pagination
 
 data class Pagination(
-    val currentPage: Int,
-    val totalPages: Int
+    val currentItemIdx: Int, // from 0
+    val totalItems: Int
 ) {
     companion object {
         // For the cases when we store the current page locally, but haven't yet requested a new page
@@ -13,5 +13,5 @@ data class Pagination(
     }
 
     val canLoadMore: Boolean
-        get() = totalPages == UNKNOWN_TOTAL || currentPage < totalPages
+        get() = totalItems == UNKNOWN_TOTAL || currentItemIdx < totalItems - 1
 }
