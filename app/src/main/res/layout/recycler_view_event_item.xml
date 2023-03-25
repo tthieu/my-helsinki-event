@@ -1,28 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recycler_view_item_container"
     android:layout_width="match_parent"
+    android:layout_height="@dimen/default_card_size"
     android:layout_margin="@dimen/half_default_margin"
-    android:layout_height="@dimen/default_card_size">
+    android:elevation="@dimen/default_elevation">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/recycler_view_item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/photo"
             android:layout_width="match_parent"
             android:layout_height="@dimen/animals_near_you_image_height"
-            android:contentDescription="@string/photo_description"/>
+            android:contentDescription="@string/photo_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/name"
-            android:layout_margin="@dimen/small_margin"
+            style="@style/TitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-    </LinearLayout>
+            android:layout_gravity="center"
+            android:padding="@dimen/small_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintBottom_toTopOf="@+id/id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/photo"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Eventsssssssssssssssssssssssssssssssss" />
+
+        <TextView
+            android:id="@+id/id"
+            style="@style/TitleTextTiny"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorDarkerGray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/name"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            tools:text="id.." />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

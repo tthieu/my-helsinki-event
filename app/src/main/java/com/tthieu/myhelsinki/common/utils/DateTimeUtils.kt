@@ -13,4 +13,9 @@ object DateTimeUtils {
         val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         LocalDateTime.parse(dateTimeString, dateFormatter)
     }
+
+    fun toString(dateTime: LocalDateTime, pattern: String): String {
+        val formatter = DateTimeFormatter.ofPattern(pattern)
+        return dateTime.format(formatter)
+    }
 }

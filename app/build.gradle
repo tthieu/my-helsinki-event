@@ -69,6 +69,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'com.google.firebase:protolite-well-known-types:18.0.0'
 
     // Testing Dependencies
     testImplementation 'junit:junit:4.13.2'

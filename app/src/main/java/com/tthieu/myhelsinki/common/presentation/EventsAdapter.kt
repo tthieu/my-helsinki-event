@@ -30,6 +30,7 @@ class EventsAdapter: ListAdapter<UIEvent, EventsAdapter.EventsViewHolder>(ITEM_C
 
         fun bind(item: UIEvent) {
             binding.name.text = item.title
+            binding.id.text = item.date
             binding.photo.setImage(item.photo)
         }
     }
