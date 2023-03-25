@@ -50,7 +50,10 @@ class MyHelsinkiEventRepository @Inject constructor(
                 apiEvents?.map {
                     apiEventMapper.mapToDomain(it)
                 }.orEmpty(),
-                apiPaginationMapper.mapToDomain(apiMeta, startItemToLoad, apiEvents?.size ?: 0)
+                apiPaginationMapper.mapToDomain(
+                    apiMeta,
+                    startItemToLoad,
+                    apiEvents?.size ?: 0)
             )
         } catch (exception: HttpException) {
             throw NetworkException(exception.message ?: "Code ${exception.code()}")

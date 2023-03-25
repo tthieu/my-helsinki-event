@@ -8,12 +8,12 @@ class ApiPaginationMapper @Inject constructor() {
 
     fun mapToDomain(
         apiEntity: ApiEventMeta?,
-        currentIdx: Int,
+        startItemIdx: Int,
         itemCount: Int
     ): Pagination {
 
         return Pagination(
-            currentItemIdx = currentIdx + itemCount,
+            lastItemIdx = startItemIdx + itemCount - 1,
             totalItems = apiEntity?.count?.toIntOrNull() ?: 0
         )
     }

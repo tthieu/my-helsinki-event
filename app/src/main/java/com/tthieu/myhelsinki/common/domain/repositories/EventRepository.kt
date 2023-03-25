@@ -7,6 +7,6 @@ import io.reactivex.Flowable
 interface EventRepository {
 
     fun getEvents(): Flowable<List<Event>>
-    suspend fun requestMoreEvents(pageToLoad: Int, numberOfItems: Int): PaginatedEvents
+    suspend fun requestMoreEvents(startItemToLoad: Int, numberOfItems: Int): PaginatedEvents
     suspend fun storeEvents(events: List<Event>)
 }

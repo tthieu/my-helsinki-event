@@ -2,8 +2,8 @@ package com.tthieu.myhelsinki.common.data.api
 
 object ApiConstants {
     const val BASE_ENDPOINT = "https://open-api.myhelsinki.fi/"
-    const val EVENTS_ENDPOINT = "events/"
-    const val EVENT_ENDPOINT = "event/"
+    const val EVENTS_ENDPOINT = "v1/events/"
+    const val EVENT_ENDPOINT = "v1/event/"
 }
 
 object ApiParameters {

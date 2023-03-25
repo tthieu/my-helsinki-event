@@ -1,7 +1,7 @@
 package com.tthieu.myhelsinki.common.domain.model.pagination
 
 data class Pagination(
-    val currentItemIdx: Int, // from 0
+    val lastItemIdx: Int, // from 0
     val totalItems: Int
 ) {
     companion object {
@@ -13,5 +13,5 @@ data class Pagination(
     }
 
     val canLoadMore: Boolean
-        get() = totalItems == UNKNOWN_TOTAL || currentItemIdx < totalItems - 1
+        get() = totalItems == UNKNOWN_TOTAL || lastItemIdx < totalItems - 1
 }

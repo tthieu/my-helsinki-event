@@ -10,8 +10,8 @@ class ApiDatesMapper @Inject constructor():
 
     override fun mapToDomain(apiEntity: ApiEventDates?): Dates {
         return Dates(
-            startingDate = DateTimeUtils.parse(apiEntity?.startingDay.orEmpty()),
-            endingDate = DateTimeUtils.parse(apiEntity?.endingDay.orEmpty())
+            startingDate = apiEntity?.startingDay?.let { DateTimeUtils.parse(it) },
+            endingDate = apiEntity?.endingDay?.let { DateTimeUtils.parse(it) }
         )
     }
 }
