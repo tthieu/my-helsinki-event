@@ -31,7 +31,7 @@ abstract class CacheModule {
             return Room.databaseBuilder(
                 context,
                 EventSearchDatabase::class.java,
-                "eventsearch.db"
+                "eventsearch_1.db"
             )
                 .build()
         }

@@ -25,13 +25,13 @@
         <TextView
             android:id="@+id/name"
             style="@style/TitleText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="@dimen/small_margin"
+            android:layout_marginHorizontal="@dimen/half_default_margin"
+            android:layout_marginVertical="@dimen/small_margin"
             android:ellipsize="end"
             android:maxLines="1"
-            app:layout_constraintBottom_toTopOf="@+id/id"
+            app:layout_constraintBottom_toTopOf="@+id/intro"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,19 +40,35 @@
             tools:text="Eventsssssssssssssssssssssssssssssssss" />
 
         <TextView
-            android:id="@+id/id"
-            style="@style/TitleTextTiny"
-            android:layout_width="wrap_content"
+            android:id="@+id/intro"
+            style="@style/TitleTextSmall"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/half_default_margin"
+            android:layout_marginVertical="@dimen/small_margin"
+            android:ellipsize="end"
+            android:maxLines="3"
             android:textColor="@color/colorDarkerGray"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/date"
             app:layout_constraintEnd_toEndOf="@id/name"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@id/name"
-            app:layout_constraintTop_toBottomOf="@+id/name"
-            tools:text="id.." />
+            app:layout_constraintTop_toBottomOf="@id/name"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Eventsssssss\nsssssssssssss\nsssssssssssss" />
 
+        <TextView
+            android:id="@id/date"
+            style="@style/TitleTextTiny"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/half_default_margin"
+            android:layout_marginVertical="@dimen/small_margin"
+            android:textColor="@color/colorDarkerGray"
+            app:layout_constraintEnd_toEndOf="@id/intro"
+            app:layout_constraintStart_toStartOf="@id/intro"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="date" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

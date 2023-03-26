@@ -17,6 +17,7 @@ import com.tthieu.myhelsinki.R
 import com.tthieu.myhelsinki.common.presentation.Event
 import com.tthieu.myhelsinki.common.presentation.EventsAdapter
 import com.tthieu.myhelsinki.databinding.FragmentEventsNearYouBinding
+import com.tthieu.myhelsinki.logging.Logger
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -24,7 +25,7 @@ import kotlinx.coroutines.launch
 class EventsNearYouFragment : Fragment()  {
 
     companion object {
-        private const val ITEMS_PER_NOW = 2
+        private const val ITEMS_PER_NOW = 1
     }
 
     private val viewModel: EventsNearYouFragmentViewModel by viewModels()
@@ -104,6 +105,7 @@ class EventsNearYouFragment : Fragment()  {
     }
 
     private fun updateScreenState(state: EventsNearYouViewState, adapter: EventsAdapter) {
+        Logger.d("state: $state")
         binding.progressBar.isVisible = state.loading
         adapter.submitList(state.events)
         handleNoMoreEventsNearby(state.noMoreEventsNearby)

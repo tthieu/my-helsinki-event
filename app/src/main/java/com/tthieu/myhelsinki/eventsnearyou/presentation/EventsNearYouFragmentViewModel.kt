@@ -72,9 +72,9 @@ class EventsNearYouFragmentViewModel @Inject constructor(
     }
 
     private fun onNewEventList(events: List<UIEvent>) {
-        Logger.d("Got more events!")
-
         val updatedEventSet = (state.value.events + events).toSet()
+
+        Logger.d("Got more events!: $updatedEventSet")
 
         _state.update { oldState ->
             oldState.copy(loading = false, events = updatedEventSet.toList())
@@ -93,7 +93,7 @@ class EventsNearYouFragmentViewModel @Inject constructor(
         val exceptionHandler = viewModelScope.createExceptionHandler(errorMessage) { onFailure(it) }
 
         viewModelScope.launch(exceptionHandler) {
-            Logger.d("Requesting more animals.")
+            Logger.d("Requesting more events.")
             val pagination = requestNextPageOfEvents(
                 if (currentItemIdx == 0) {
                     0

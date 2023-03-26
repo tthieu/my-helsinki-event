@@ -12,6 +12,7 @@ class UiEventMapper @Inject constructor(): UiMapper<Event, UIEvent> {
         return UIEvent(
             id = input.id,
             title = input.name,
+            intro = input.intro,
             photo = input.images.first(),
             date = input.dates.startingDate?.let { mapStartingDate(it) } ?: ""
         )
