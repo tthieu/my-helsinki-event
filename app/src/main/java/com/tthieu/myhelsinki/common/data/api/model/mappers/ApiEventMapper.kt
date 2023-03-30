@@ -2,7 +2,6 @@ package com.tthieu.myhelsinki.common.data.api.model.mappers
 
 import com.tthieu.myhelsinki.common.data.api.model.ApiEvent
 import com.tthieu.myhelsinki.common.domain.model.event.Event
-import com.tthieu.myhelsinki.common.domain.model.event.Location
 import javax.inject.Inject
 
 class ApiEventMapper @Inject constructor (
@@ -13,12 +12,15 @@ class ApiEventMapper @Inject constructor (
     override fun mapToDomain(apiEntity: ApiEvent): Event {
         return Event(
             id = apiEntity.id ?: throw MappingException("Event ID cannot be null"),
-            name = apiEntity.name?.fi.orEmpty(),
+            nameFi = apiEntity.name?.fi.orEmpty(),
+            nameEn = apiEntity.name?.en.orEmpty(),
+            nameSv = apiEntity.name?.sv.orEmpty(),
+            nameZh = apiEntity.name?.zh.orEmpty(),
             location = apiLocationMapper.mapToDomain(apiEntity.location),
             intro = apiEntity.description?.intro.orEmpty(),
             images = apiEntity.description?.images?.map { it?.url.orEmpty() }.orEmpty(),
             tags = apiEntity.tags?.map { it?.name.orEmpty() }.orEmpty(),
-            dates = apiDatesMapper.mapToDomain(apiEntity.eventDates)
+            dates = apiDatesMapper.mapToDomain(apiEntity.eventDates),
         )
     }
 

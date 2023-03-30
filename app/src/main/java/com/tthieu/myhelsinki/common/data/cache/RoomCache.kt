@@ -15,4 +15,8 @@ class RoomCache @Inject constructor(
     override suspend fun storeNearbyEvents(events: List<CachedEventAggregate>) {
         eventsDao.insertEvents(events)
     }
+
+    override fun searchEventsBy(name: String, lang: String): Flowable<List<CachedEventAggregate>> {
+        return eventsDao.searchEventsBy(name, lang)
+    }
 }

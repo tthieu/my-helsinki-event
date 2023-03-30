@@ -33,4 +33,19 @@ abstract class EventsDao {
             )
         }
     }
+
+    @Transaction
+    @Query(
+        """
+        SELECT * from events
+        WHERE ('en' == :lang AND nameEn LIKE '%' || :name || '%')
+        OR ('sv' == :lang AND nameSv LIKE '%' || :name || '%')
+        OR ('zh' == :lang AND nameZh LIKE '%' || :name || '%')
+        OR ('fi' == :lang AND nameFi LIKE '%' || :name || '%')
+    """
+    )
+    abstract fun searchEventsBy(
+        name: String,
+        lang: String,
+    ): Flowable<List<CachedEventAggregate>>
 }

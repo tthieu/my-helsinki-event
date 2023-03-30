@@ -6,7 +6,8 @@ import io.reactivex.Flowable
 interface Cache {
     fun getNearbyEvents(): Flowable<List<CachedEventAggregate>>
     suspend fun storeNearbyEvents(events: List<CachedEventAggregate>)
-    // fun searchEventsBy(
-    //
-    // )
+    fun searchEventsBy(
+        name: String,
+        lang: String
+    ): Flowable<List<CachedEventAggregate>>
 }

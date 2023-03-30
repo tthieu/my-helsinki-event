@@ -14,7 +14,10 @@ import com.tthieu.myhelsinki.common.utils.DateTimeUtils
 data class CachedEvent (
     @PrimaryKey
     val eventId: String,
-    val name: String,
+    val nameFi: String,
+    val nameEn: String,
+    val nameSv: String,
+    val nameZh: String,
     val lat: Double,
     val lon: Double,
     val street: String,
@@ -23,7 +26,7 @@ data class CachedEvent (
     val neighborhood: String,
     val intro: String,
     val startingDate: String,
-    val endingDate: String
+    val endingDate: String,
 ) {
 
     companion object {
@@ -35,7 +38,10 @@ data class CachedEvent (
 
             return CachedEvent(
                 eventId = domainModel.id,
-                name = domainModel.name,
+                nameFi = domainModel.nameFi,
+                nameEn = domainModel.nameEn,
+                nameSv = domainModel.nameSv,
+                nameZh = domainModel.nameZh,
                 lat = location.lat,
                 lon = location.lon,
                 street = address.street,
@@ -44,7 +50,7 @@ data class CachedEvent (
                 neighborhood = address.neighborhood,
                 intro = domainModel.intro,
                 startingDate = dates.startingDate.toString(),
-                endingDate = dates.endingDate.toString()
+                endingDate = dates.endingDate.toString(),
             )
         }
     }
@@ -55,7 +61,10 @@ data class CachedEvent (
     ): Event {
         return Event(
             id = eventId,
-            name = name,
+            nameFi = nameFi,
+            nameEn = nameEn,
+            nameSv = nameSv,
+            nameZh = nameZh,
             location = mapLocation(),
             intro = intro,
             images = photos.map { it.toDomain() },

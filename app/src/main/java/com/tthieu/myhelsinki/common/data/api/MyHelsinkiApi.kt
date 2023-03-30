@@ -15,6 +15,14 @@ interface MyHelsinkiApi {
         // @Query(ApiParameters.DISTANCE_FILTER) distance: String
     ): ApiPaginatedEvents
 
+    @GET(ApiConstants.EVENTS_ENDPOINT)
+    suspend fun searchEventBy(
+        @Query(ApiParameters.LANGUAGE_FILTER) language: String,
+        // @Query(ApiParameters.DISTANCE_FILTER) distance: String,
+        @Query(ApiParameters.START) start: Int,
+        @Query(ApiParameters.LIMIT) pageSize: Int,
+    ): ApiPaginatedEvents
+
     @GET(ApiConstants.EVENT_ENDPOINT)
     suspend fun fetchEvent(
         @Query(ApiParameters.ID) id: String,
