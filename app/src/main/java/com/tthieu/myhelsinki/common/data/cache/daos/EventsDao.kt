@@ -42,6 +42,11 @@ abstract class EventsDao {
         OR ('sv' == :lang AND nameSv LIKE '%' || :name || '%')
         OR ('zh' == :lang AND nameZh LIKE '%' || :name || '%')
         OR ('fi' == :lang AND nameFi LIKE '%' || :name || '%')
+        OR ('' == :lang AND (
+                (nameEn LIKE '%' || :name || '%') 
+                OR (nameSv LIKE '%' || :name || '%') 
+                OR (nameZh LIKE '%' || :name || '%') 
+                OR (nameFi LIKE '%' || :name || '%')))
     """
     )
     abstract fun searchEventsBy(

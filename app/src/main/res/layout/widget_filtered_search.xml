@@ -29,10 +29,10 @@
         app:layout_constraintTop_toBottomOf="@id/search">
 
         <AutoCompleteTextView
-            android:id="@+id/type"
+            android:id="@+id/distance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/event_type_dropdown_menu_hint"
+            android:hint="@string/distance_dropdown_menu_hint"
             android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -50,10 +50,10 @@
         app:layout_constraintTop_toBottomOf="@+id/search">
 
         <AutoCompleteTextView
-            android:id="@+id/age"
+            android:id="@+id/language"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/age_dropdown_menu_hint"
+            android:hint="@string/language_dropdown_menu_hint"
             android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 

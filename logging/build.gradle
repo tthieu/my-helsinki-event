@@ -23,10 +23,14 @@ android {
             debuggable true
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation 'com.jakewharton.timber:timber:5.0.1'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20-Beta'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20-RC2'
 }
 

@@ -7,9 +7,9 @@
     <string name="search_screen_label">Find your interesting events</string>
     <string name="search_hint">Search for names</string>
     <string name="initial_search_text_label">Use the above search field to find your events! Don\'t forget to use the filters to narrow down the search.</string>
-    <string name="age_dropdown_menu_hint">Age</string>
-    <string name="event_type_dropdown_menu_hint">Type</string>
-    <string name="search_remotely_text_label">Going \"here kitty kitty!\" at the remote server...</string>
+    <string name="language_dropdown_menu_hint">Language</string>
+    <string name="distance_dropdown_menu_hint">Distance</string>
+    <string name="search_remotely_text_label">Searching at the remote server...</string>
     <string name="no_search_results_text_label">Sorry, couldn\'t find anything :(</string>
     <string name="an_error_occurred">An error occurred. Please try again later.</string>
 </resources>

@@ -79,11 +79,19 @@ class MyHelsinkiEventRepository @Inject constructor(
         searchParams: SearchParameters,
         numberOfItems: Int
     ): PaginatedEvents {
-        val (apiEvents, apiMeta) = api.searchEventBy(
-            searchParams.lang,
-            startItemToLoad,
-            numberOfItems
-        )
+
+        val (apiEvents, apiMeta) = if (searchParams.lang.isNullOrEmpty()) {
+            api.fetchNearbyEvents(
+                startItemToLoad,
+                numberOfItems
+            )
+        } else {
+            api.searchEventBy(
+                searchParams.lang,
+                startItemToLoad,
+                numberOfItems
+            )
+        }
 
         return PaginatedEvents(
             apiEvents?.map { apiEventMapper.mapToDomain(it) }.orEmpty(),

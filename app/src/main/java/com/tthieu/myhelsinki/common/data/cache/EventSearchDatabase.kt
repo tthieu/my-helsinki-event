@@ -15,7 +15,7 @@ import com.tthieu.myhelsinki.common.data.cache.model.cachedevent.CachedTag
         CachedEvent::class,
         CachedEventTagCrossRef::class
     ],
-    version = 1
+    version = 2
 )
 abstract class EventSearchDatabase : RoomDatabase() {
     abstract fun eventsDao(): EventsDao

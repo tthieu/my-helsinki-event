@@ -16,7 +16,7 @@ class SearchEventsRemotely @Inject constructor(
     suspend operator fun invoke(
         startItemToLoad: Int,
         searchParams: SearchParameters,
-        numberOfItems: Int
+        numberOfItems: Int = Pagination.DEFAULT_PAGE_SIZE
     ): Pagination {
         return withContext(dispatchersProvider.io()) {
             val (events, pagination) = eventRepository.searchEventsRemotely(
