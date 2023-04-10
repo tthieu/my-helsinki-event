@@ -33,7 +33,7 @@ This layer encompasses the business logic of the app, and protect the app's logi
 
 ---
 ### Data layer
-The data layer is responsible for interacting with data sources: database, shared preferences, and network. This project follows the repository pattern recommended by Google.
+The data layer is responsible for interacting with data sources: database, shared preferences, and network. This project follows the **repository pattern** recommended by Google.
 ![Data layer](https://lh3.googleusercontent.com/frEaeLoXtnLMW1z4TwBloCoG0IMBIZzyctFiLkVpJIp943LG6ixOke8jHqRC2ylzE-6UdfoRJ5XsTdefBenFwVBvihWqFD-R2kA-1Ure8nKD9q9DpJO3in8GNetsrO9MgOSmV3W9MblMLebVw5xaK4gZtIT4HwgpHZ3pWTJsRdmOFgx0KQ2zf4AUSFkJye3cfveJRzkQTZQ9DCv62V-hEPgiqNdyVKYBgTIoxRmvA9pgzvEoleKYLlwYpLB85WTL146GWOiCLm5UQhHaFj8oIU1weCUdhoRGw2khwfTG1yr7balTG43uL1_NulCXGEZ2oWLKlkKYQkod4rV-Eyv2o9YGuMmwAjevIJZZsM_PPP8Yi7I7AEFwb9F43Tjk8K06kKS6AHuiaAt7t-4wW2N1n4Cw9TURZv8Xv2FjtasviMkPH_nmRuLv7tx_n-rBIGs9iwZpOJj_UP3FCFIriYks8sAvVtuxdI0dUi5m8fWcZijcUABwhu_osy4g3QzoifH2qR3-T-vEclj91pBX-R63x-S3ncxtwqcKpaYSeJqLZp4XiJZtkNBgfQhiJz8dgvpcNlAPJVI_AnqZ0VBmzeKQQOCF_2kunrloalJhSg2bOW8yAb-Pu89Hg9RXRvp4NMipAklXRSFOjPoYsk_rmh_h0DsN6nHLeFdTaZWaDXEsmvImSocagJRNla9M3OaF9kYpz24xJJY0mQUnsdCuvJQCLm5r9v4h-Lrgx7_Rmytg479MXdbOYO1qW426oAHhdcvy27hvtJBxjugmuR581zuNifCubeMECauX-1ilENOZaKw-JKX-qJsNp77nN4QYdUvzTa_RhvbyxlLjhYPjNSjLrHB16avy-PxxkZa65GntWxubeDOuD--qyumfAtwop2s4GSfYI6O_Vvktd9Wc2ak_7XI0rh6sZiL34Q4YU9xTiNwgYRzstaO1cOlJ0kaCeeRiqCn-ukPEO8RQA8x8OIRgUtnwIZ5XBJT4qd8YoaYfrYawSLcfgX_P2VrX=w1684-h1288-s-no?authuser=2)
 
 **Network**
@@ -49,7 +49,11 @@ Room is used to create the caching system. The entity relationship diagram is:
 ### Presentation layer
 This layer encapsulates all the code related to the UI, holding all the UI-related components. In other words, this layer deals with framework code.
 
+
+
 ## Data
 The events data in this sample is fetched from [MyHelsinki Open Api](https://open-api.myhelsinki.fi/doc). The app needs to work offline, so the data will need to be stored. Both a **cache data source** and a **network data source** will be used. 
 
 The approach is to follow a **single source of truth** implementation. Keep the cache in sync with the network, but ensure that the UI accesses only the cache. This way, the app displays the latest data both on and offline.
+
+![enter image description here](https://lh3.googleusercontent.com/Ant0EYkESf41GxRo2Ojbw2nyU_6C9IQOXJIFY-7ad-2_T6uIA87tcghK6ffffkA_-dqkpqSOb7fq9PU5APVuoPwoUcbSmdtBLbpuOpCOetRCsj1borUlWRB-ruKGCW8iOslw5mWsKI0EFQoZRi9sOg78wbaM1JBCOpMdJfIoktHZOapMgH4tuWYIzjyctnqy5ksZAFxfryKc1i2xNyU2zXMPGHV0IknzaRTN6GE0rqwxr8vVXr7q50DAgrgYX1jV_4fUxFpOaCNcNt8UvAxmM44nswR3xH0fNDr60SCfcdauU-xzvO8nXDM-rG0Pv3TzuTHTIjrgLeKKmi1jy1bIpLwrSWjtJrvQluYB36DxTMc-r0FmLby_HiE9m5TXEyU6gpRjsR_ODUdB_8wyXV01YTEKMZW5j8dMmuV5FK-VvDdN83qu9A5w6gC23SHj_AyO8xfg_flr2DlDZx-s8dUWIcRLaoPvITqvQLbxSIen6SZM4nE3owNLgc-8x3oaFIRJwdM24V5ImeRMeeW4osVV9qgBaysVxsS40p1WSPy59Hr_mrloHWzvLMFoxgfErq45kzzZ1LMahiqyx1s1eUGaVFyFPrM7aeAZm-0oC3vHuGfKHlJ6pO9YUcn9dpW4cY2pKFlAZGCNvJ_T8Y_hRn0LUPY1cL4wVTKiFVw27htYaoitYY4fCeQL2UXR1hZ66KkYUdquwmVNaFFzuTLlp5cs0wGKUL_fjKv7rC7s_rnjvShcdDzKwAhCvovqOiaU_wlZHeEtBTnMXA_aHzhSiKEC7sP8tcGtiqqAiKBWp5YCZcQSCNcmkk8m2YweO7SyxVuLINVwmDg6tU0ehqFAyeUCl5938L9nSEOsJ-RJMkgQ58ZNYT_4WLih5tD3MkhK5WFNdMysl5xcjz-UKuriKqlGfV0h9K9nnVfayMXkYB1D51DbNDRHbG2Td4eMumLKdJQO9HJ4R18mBsHaY1G-6nMWmTA4SoYwOM8mJpf91YutXF_X8tMHN3-hLSA9=w1608-h2032-s-no?authuser=2)
