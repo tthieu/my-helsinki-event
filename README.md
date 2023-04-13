@@ -34,7 +34,7 @@ This layer encompasses the business logic of the app, and protect the app's logi
 ---
 ### Data layer
 The data layer is responsible for interacting with data sources: database, shared preferences, and network. This project follows the **repository pattern** recommended by Google.
-![Data layer](images/data_layer.png)
+![Data layer](images/data_layer.png | width=500)
 
 **Network**
 
