@@ -108,7 +108,9 @@ class SearchEventFragmentViewModel @Inject constructor(
 
     private fun onEventList(events: List<Event>) {
         _state.update { oldState ->
-            oldState.updateToHasSearchResults(events.map { uiEventMapper.mapToView(it) })
+            oldState.updateToHasSearchResults(events.map {
+                uiEventMapper.mapToView(it)
+            })
         }
     }
 
@@ -183,7 +185,7 @@ class SearchEventFragmentViewModel @Inject constructor(
         )
 
         remoteSearchJob = viewModelScope.launch(exceptionHandler) {
-            Logger.d("Searching remotey...")
+            Logger.d("Searching remotely...")
             val pagination = searchEventsRemotely(
                 if (currentItemIdx == 0) {
                     0
