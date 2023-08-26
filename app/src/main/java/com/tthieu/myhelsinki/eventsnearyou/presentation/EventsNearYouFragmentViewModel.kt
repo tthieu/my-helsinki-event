@@ -14,13 +14,13 @@ import com.tthieu.myhelsinki.eventsnearyou.domain.usecases.GetEvents
 import com.tthieu.myhelsinki.eventsnearyou.domain.usecases.RequestNextPageOfEvents
 import com.tthieu.myhelsinki.logging.Logger
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -30,7 +30,6 @@ class EventsNearYouFragmentViewModel @Inject constructor(
     private val getEvents: GetEvents,
     private val requestNextPageOfEvents: RequestNextPageOfEvents,
     private val uiEventMapper: UiEventMapper,
-    private val compositeDisposable: CompositeDisposable
 ) : ViewModel() {
 
     companion object {
@@ -60,15 +59,15 @@ class EventsNearYouFragmentViewModel @Inject constructor(
     }
 
     private fun subscribeToEventUpdates() {
-        getEvents()
-            .map { events -> events.map { uiEventMapper.mapToView(it) } }
-            .subscribeOn(Schedulers.computation())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                { onNewEventList(it) },
-                { onFailure(it) }
-            )
-            .addTo(compositeDisposable)
+        viewModelScope.launch {
+            getEvents()
+                .map { events -> events.map { uiEventMapper.mapToView(it) } }
+                .catch { onFailure(it) }
+                .flowOn(Dispatchers.Default)
+                .collect {
+                    onNewEventList(it)
+                }
+        }
     }
 
     private fun onNewEventList(events: List<UIEvent>) {
@@ -125,10 +124,5 @@ class EventsNearYouFragmentViewModel @Inject constructor(
                 }
             }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.clear()
     }
 }

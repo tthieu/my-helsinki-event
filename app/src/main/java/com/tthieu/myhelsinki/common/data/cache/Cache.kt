@@ -1,13 +1,13 @@
 package com.tthieu.myhelsinki.common.data.cache
 
 import com.tthieu.myhelsinki.common.data.cache.model.cachedevent.CachedEventAggregate
-import io.reactivex.Flowable
+import kotlinx.coroutines.flow.Flow
 
 interface Cache {
-    fun getNearbyEvents(): Flowable<List<CachedEventAggregate>>
+    fun getNearbyEvents(): Flow<List<CachedEventAggregate>>
     suspend fun storeNearbyEvents(events: List<CachedEventAggregate>)
     fun searchEventsBy(
         name: String,
         lang: String
-    ): Flowable<List<CachedEventAggregate>>
+    ): Flow<List<CachedEventAggregate>>
 }

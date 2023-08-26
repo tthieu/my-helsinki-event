@@ -12,7 +12,9 @@ import com.tthieu.myhelsinki.common.domain.model.pagination.PaginatedEvents
 import com.tthieu.myhelsinki.common.domain.repositories.EventRepository
 import com.tthieu.myhelsinki.searchevent.domain.model.SearchParameters
 import com.tthieu.myhelsinki.searchevent.domain.model.SearchResults
-import io.reactivex.Flowable
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 import retrofit2.HttpException
 import javax.inject.Inject
 
@@ -25,7 +27,7 @@ class MyHelsinkiEventRepository @Inject constructor(
 
     private val language = LanguageFilter.fi.toString()
 
-    override fun getEvents(): Flowable<List<Event>> {
+    override fun getEvents(): Flow<List<Event>> {
         return cache.getNearbyEvents()
             .distinctUntilChanged() // ensure only events with new information get to the subscriber
             .map { eventList ->
@@ -102,7 +104,7 @@ class MyHelsinkiEventRepository @Inject constructor(
         )
     }
 
-    override fun searchCachedEventsBy(searchParameters: SearchParameters): Flowable<SearchResults> {
+    override fun searchCachedEventsBy(searchParameters: SearchParameters): Flow<SearchResults> {
         val (name, lang) = searchParameters
 
         return cache.searchEventsBy(name, lang)

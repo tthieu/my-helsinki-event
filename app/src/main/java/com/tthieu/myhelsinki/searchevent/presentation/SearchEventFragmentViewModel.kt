@@ -14,15 +14,14 @@ import com.tthieu.myhelsinki.searchevent.domain.usecases.GetSearchFilters
 import com.tthieu.myhelsinki.searchevent.domain.usecases.SearchEvents
 import com.tthieu.myhelsinki.searchevent.domain.usecases.SearchEventsRemotely
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.subjects.BehaviorSubject
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.util.concurrent.CancellationException
@@ -34,15 +33,14 @@ class SearchEventFragmentViewModel @Inject constructor(
     private val searchEventsRemotely: SearchEventsRemotely,
     private val searchEvents: SearchEvents,
     private val getSearchFilters: GetSearchFilters,
-    private val compositeDisposable: CompositeDisposable
 ): ViewModel() {
 
     private var currentPage = 0
     private var currentItemIdx = 0
 
     private val _state = MutableStateFlow(SearchViewState())
-    private val querySubject = BehaviorSubject.create<String>()
-    private val langSubject = BehaviorSubject.createDefault("")
+    private val queryStateFlow = MutableStateFlow("")
+    private val langStateFlow = MutableStateFlow("")
 
     private var remoteSearchJob: Job = Job()
 
@@ -73,13 +71,12 @@ class SearchEventFragmentViewModel @Inject constructor(
     }
 
     private fun setupSearchSubscription() {
-        searchEvents(querySubject, langSubject)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                { onSearchResults(it) },
-                { onFailure(it) }
-            )
-            .addTo(compositeDisposable)
+        viewModelScope.launch {
+            searchEvents(queryStateFlow, langStateFlow)
+                .catch { onFailure(it) }
+                .flowOn(Dispatchers.Main)
+                .collect { onSearchResults(it) }
+        }
     }
 
     private fun onSearchResults(searchResults: SearchResults) {
@@ -132,11 +129,6 @@ class SearchEventFragmentViewModel @Inject constructor(
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.clear()
-    }
-
     private fun loadFilterValues() {
         val exceptionHandler = createExceptionHandler(
             message = "Failed to get filter value!"
@@ -159,7 +151,7 @@ class SearchEventFragmentViewModel @Inject constructor(
     private fun updateQuery(input: String) {
         resetPagination()
 
-        querySubject.onNext(input)
+        queryStateFlow.value = input
 
         if (input.isEmpty()) {
             setNoSearchQueryState()
@@ -169,7 +161,7 @@ class SearchEventFragmentViewModel @Inject constructor(
     }
 
     private fun updateLangValue(lang: String) {
-        langSubject.onNext(lang)
+        langStateFlow.value = lang
     }
 
     private fun onEmptyCacheResults(searchParameters: SearchParameters) {

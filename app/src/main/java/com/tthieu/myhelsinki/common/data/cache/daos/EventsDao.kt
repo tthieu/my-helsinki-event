@@ -9,13 +9,13 @@ import com.tthieu.myhelsinki.common.data.cache.model.cachedevent.CachedEvent
 import com.tthieu.myhelsinki.common.data.cache.model.cachedevent.CachedEventAggregate
 import com.tthieu.myhelsinki.common.data.cache.model.cachedevent.CachedPhoto
 import com.tthieu.myhelsinki.common.data.cache.model.cachedevent.CachedTag
-import io.reactivex.Flowable
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 abstract class EventsDao {
     @Transaction
     @Query("SELECT * FROM events")
-    abstract fun getAllEvents(): Flowable<List<CachedEventAggregate>>
+    abstract fun getAllEvents(): Flow<List<CachedEventAggregate>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun insertEventAggregate(
@@ -52,5 +52,5 @@ abstract class EventsDao {
     abstract fun searchEventsBy(
         name: String,
         lang: String,
-    ): Flowable<List<CachedEventAggregate>>
+    ): Flow<List<CachedEventAggregate>>
 }

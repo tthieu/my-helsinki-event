@@ -2,13 +2,13 @@ package com.tthieu.myhelsinki.common.data.cache
 
 import com.tthieu.myhelsinki.common.data.cache.daos.EventsDao
 import com.tthieu.myhelsinki.common.data.cache.model.cachedevent.CachedEventAggregate
-import io.reactivex.Flowable
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class RoomCache @Inject constructor(
     private val eventsDao: EventsDao
 ) : Cache {
-    override fun getNearbyEvents(): Flowable<List<CachedEventAggregate>> {
+    override fun getNearbyEvents(): Flow<List<CachedEventAggregate>> {
         return eventsDao.getAllEvents()
     }
 
@@ -16,7 +16,7 @@ class RoomCache @Inject constructor(
         eventsDao.insertEvents(events)
     }
 
-    override fun searchEventsBy(name: String, lang: String): Flowable<List<CachedEventAggregate>> {
+    override fun searchEventsBy(name: String, lang: String): Flow<List<CachedEventAggregate>> {
         return eventsDao.searchEventsBy(name, lang)
     }
 }

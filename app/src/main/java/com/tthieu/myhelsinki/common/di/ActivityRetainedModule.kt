@@ -6,11 +6,9 @@ import com.tthieu.myhelsinki.common.utils.CoroutineDispatchersProvider
 import com.tthieu.myhelsinki.common.utils.DispatchersProvider
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityRetainedComponent
 import dagger.hilt.android.scopes.ActivityRetainedScoped
-import io.reactivex.disposables.CompositeDisposable
 
 @Module
 @InstallIn(ActivityRetainedComponent::class)
@@ -23,8 +21,4 @@ abstract class ActivityRetainedModule {
     @Binds
     abstract fun bindDispatchersProvider(dispatchersProvider: CoroutineDispatchersProvider): DispatchersProvider
 
-    companion object {
-        @Provides
-        fun provideCompositeDisposable() = CompositeDisposable()
-    }
 }
